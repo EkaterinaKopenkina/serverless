@@ -31,6 +31,10 @@ if conn:
         """)
         conn.commit()
 
+@app.route('/')
+def hello():
+    return "Hello, Serverless! 🚀\n", 200, {'Content-Type': 'text/plain'}
+
 @app.route('/echo', methods=['POST'])
 def echo():
     data = request.get_json()
