@@ -30,6 +30,16 @@ if conn:
             )
         """)
         conn.commit()
+        
+@app.route('/echo', methods=['POST'])
+def echo():
+    data = request.get_json()
+    return jsonify({
+        "status": "received",
+        "you_sent": data,
+        "length": len(str(data)) if data else 0
+    })
+
 
 @app.route('/save', methods=['POST'])
 def save_message():
